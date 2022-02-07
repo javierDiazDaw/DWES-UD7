@@ -1,20 +1,25 @@
 <?php 
 
-$uri="http://192.168.129.45/";
+$uri="http://localhost/DWES-UD7/ejercicio3";
 $server = new SoapServer(null,array('uri'=>$uri));
 $server->addFunction("mostrar");
 $server->handle();
 
-function mostrar($dato){
+function getConnection(){
+    $usuario = "developer";
+    $pass = "developer";
+    return new PDO('mysql:host=localhost;dbname=ciudades', $usuario, $pass);
+}
 
-
-    $dato = obtenerCiudad($dato);
-
-    // if ($dato>=1000){
-    //     return "el $dato es par";
-    // }else{
-    //     return "el $dato es impar";
-    // }
-    
+function mostrar($poblacion){        
+    try {      
+        $db = getConnection();
+        $result = $db->prepare('SELECT * FROM ciudad WHERE poblacion >= ?');
+        $result->bindParam(1, $poblacion);
+        $result->execute();            
+        return $result->fetchAll();
+    } catch (PDOException $e) {
+        return false;
+    }        
 }
 ?>

@@ -10,61 +10,42 @@
     <?php 
     
     $error = "";
-    $resultado = "";
-    $dato = "";
+    $resultado = [];    
 
     // Iniciamos el cliente SOAP
     // Escribimos la dirección donde se encuentra el servicio
-    $url = "http://192.168.129.70/mostrar.php";
-    $uri = "http://192.168.129.70/";
+    $url = "http://localhost/DWES-UD7/ejercicio3/mostrar.php";
+    $uri = "http://localhost/DWES-UD7/ejercicio3";
     $cliente = new SoapClient(null, array('location' => $url, 'uri' => $uri));
 
     // Ejecutamos las siguientes líneas al enviar el formulario
     if (isset($_POST['enviar'])) {
         // Establecemos los parámetros de envío
-        if (!empty($_POST['dato'])) {
-            $dato = $_POST['dato'];            
+        if (!empty($_POST['poblacion'])) {                       
             
-            $dato =  $cliente->mostrar($dato);            
-
+            $poblacion = (int) $_POST['poblacion'];
+            
+            $resultado =  $cliente->mostrar($poblacion);            
+            
         } else {
             $error = "<strong>Error:</strong> Debes introducir datos numéricos<br/><br/>";
         }
     }
     ?>
-    <h1>Obtener poblacion</h1>    
+    <h1>Obtener ciudad</h1>    
     <form action="index.php" method="post">
         <?php 
-        print "<input type='text' name='dato'>";        
+        print "<input type='number' name='poblacion'>";        
         print "<input type='submit' name='enviar' value='Mostrar'>";
-        print "<p class='error'>$error</p>";
-        print "<p style='font-size: 12pt;font-weight: bold;color: #0066CC;'>$resultado</p>";
+        print "<p class='error'>$error</p>";    
+        
+        foreach($resultado as $ciudad){                
+
+            "<p>" . print $ciudad['nombre'] . "</p>";
+        }
+        
         ?>
-    </form>  
-    
-    <table border="1">
-        <thead>
-            <tr>                
-                <th>Nombre</th>
-                <th>Poblacion</th>                
-            </tr>
-        </thead>
-        <tbody>
-           
-           <?php
-                  
-                echo "<tr>";
-                    echo "<td>";
-                    echo $dato["nombre"];
-                    echo "</td>";
-                    echo "<td>";
-                    echo $dato["poblacion"];
-                    echo "</td>";                    
-                echo"</tr>";            
-           ?>
-        </tbody>
-    </table>
-    
+    </form>
 </body>
 
 </html>
