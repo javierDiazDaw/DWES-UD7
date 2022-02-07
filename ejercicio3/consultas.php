@@ -21,3 +21,17 @@ function obtenerCiudades(){
         return false;
     }        
 }
+
+function obtenerCiudad($poblacion){        
+    try {      
+        $db = getConnection();
+        $result = $db->prepare('SELECT * FROM ciudad WHERE poblacion >= ?');
+        $result->bindParam(1, $poblacion);
+        $result->execute();            
+        return $result->fetch();
+    } catch (PDOException $e) {
+        return false;
+    }        
+}
+
+?>
