@@ -32,7 +32,7 @@
         }
     }
     ?>
-    <h1>Obtener ciudad</h1>    
+    <h1>Obtener ciudad por su población</h1>    
     <form action="index.php" method="post">
         <?php 
         print "<input type='number' name='poblacion'>";        
