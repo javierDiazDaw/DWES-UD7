@@ -39,9 +39,10 @@
         print "<input type='submit' name='enviar' value='Mostrar'>";
         print "<p class='error'>$error</p>";    
         
-        foreach($resultado as $ciudad){                
+        foreach($resultado as $c){                
 
-            "<p>" . print $ciudad['nombre'] . "</p>";
+            "<p>" . print $c['nombre'] . ", " . "</p>";
+            "<p>" . print $c['poblacion'] . "</p>";            
         }
         
         ?>

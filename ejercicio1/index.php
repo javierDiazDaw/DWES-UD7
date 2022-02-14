@@ -7,16 +7,16 @@
 </head>
 
 <body>
-    <?php //IMPORTANTE: ELIMINA EL ESPACIO ANTES DE LA INTERROGACIÓN
-    // Vaciamos algunas variables
+    <?php 
+    
     $error = "";
     $resultado = "";
     $dni = "";
 
     // Iniciamos el cliente SOAP
     // Escribimos la dirección donde se encuentra el servicio
-    $url = "http://192.168.129.45/calcularLetra.php";
-    $uri = "http://192.168.129.45/";
+    $url = "http://localhost/DWES-UD7/ejercicio1/calcularLetra.php";
+    $uri = "http://localhost/DWES-UD7/ejercicio1";
     $cliente = new SoapClient(null, array('location' => $url, 'uri' => $uri));
 
     // Ejecutamos las siguientes líneas al enviar el formulario
@@ -35,7 +35,7 @@
     <h1>Obtener letra DNI</h1>
     <h2>Servicio Web + PHP + SOAP</h2>
     <form action="index.php" method="post">
-        <?php //IMPORTANTE: ELIMINA EL ESPACIO ANTES DE LA INTERROGACIÓN
+        <?php
         print "<input type='text' name='n1'>";
         print "<input type='text' name='n2'>";
         print "<input type='submit' name='enviar' value='Calcular'>";
