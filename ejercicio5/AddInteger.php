@@ -39,7 +39,7 @@
 
         $cliente = new SoapClient($wsdl, $options);
 
-        if (!empty($_POST['num1'])) {
+        if (!empty($_POST['num1']) && !empty($_POST['num2'])) {
 
             $resultado = $cliente->AddInteger($params)->AddIntegerResult;
         } else {

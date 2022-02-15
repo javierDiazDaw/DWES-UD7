@@ -2,7 +2,7 @@
 // Vaciamos algunas variables
 $error = "";
 $resultado = "";
-$dni = "";
+
 
 
 $wsdl = 'https://www.crcind.com/csp/samples/SOAP.Demo.CLS?WSDL'; //URL de nuestro servicio soap
@@ -37,7 +37,7 @@ if (isset($_POST['enviar'])) {
         // Si los parámetros son correctos, llamamos a la función letra de calcularLetra.php
         $result = $cliente->FindPerson($params);
     } else {
-        $error = "<strong>Error:</strong> Debes introducir un DNI correcto<br/><br/>Ej: 45678987";
+        $error = "<strong>Error:</strong> Debes introducir un numero<br/><br/>Ej: 45678987";
     }
 }
 ?>
@@ -86,8 +86,6 @@ if (isset($_POST['enviar'])) {
                 echo $p->FavoriteColors->FavoriteColorsItem . "<br>";
             }
         }
-
-
         echo "</p>";
         ?>
     </form>

@@ -23,9 +23,9 @@
         // Establecemos los parámetros de envío
         if (!empty($_POST['poblacion'])) {                       
             
-            $poblacion = (int) $_POST['poblacion'];
+            $p = (int) $_POST['poblacion'];
             
-            $resultado =  $cliente->mostrar($poblacion);            
+            $resultado =  $cliente->mostrar($p);            
             
         } else {
             $error = "<strong>Error:</strong> Debes introducir datos numéricos<br/><br/>";
@@ -39,11 +39,28 @@
         print "<input type='submit' name='enviar' value='Mostrar'>";
         print "<p class='error'>$error</p>";    
         
-        foreach($resultado as $c){                
+        echo "<table border = '1'>";
+            echo "<tr>";
+                echo "<th>";
+                    echo "Ciudad";
+                echo "</th>";
+                echo "<th>";
+                    echo "Poblacion";
+                echo "</th>";
+            echo "</tr>";   
 
-            "<p>" . print $c['nombre'] . ", " . "</p>";
-            "<p>" . print $c['poblacion'] . "</p>";            
+
+        foreach($resultado as $ciudad){                
+            echo "<tr>";   
+                echo "<td>";
+                echo $ciudad['nombre'];
+                echo "</td>";
+                echo "<td>";
+                echo $ciudad['poblacion'];
+                echo "</td>";
+            echo "</tr>";
         }
+        echo "</table>";
         
         ?>
     </form>

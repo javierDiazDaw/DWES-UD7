@@ -9,8 +9,7 @@
 <body>
     <?php
     $error = "";
-    $resultado = "";
-    $dni = "";
+    $resultado = "";    
 
     // Iniciamos el cliente SOAP
     // Escribimos la dirección donde se encuentra el servicio
@@ -39,7 +38,7 @@
 
         $cliente = new SoapClient($wsdl, $options);
 
-        if (!empty($_POST['num1'])) {
+        if (!empty($_POST['num1']) && !empty($_POST['num2'])){
 
             $resultado = $cliente->DivideInteger($params)->DivideIntegerResult;
         } else {

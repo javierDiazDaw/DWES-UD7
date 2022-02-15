@@ -1,17 +1,17 @@
-<?php //IMPORTANTE: ELIMINA EL ESPACIO ANTES DE LA INTERROGACIÓN
+<?php 
 // Instanciamos un nuevo servidor SOAP
-$uri="http://192.168.129.45/";
+$uri="http://localhost/DWES-UD7/ejercicio2";
 $server = new SoapServer(null,array('uri'=>$uri));
 $server->addFunction("parImpar");
 $server->handle();
 
-// Función para obtener raíz cuadrada
-function parImpar($n1) {
+// Función para obtener el resultado si es par o impar
+function parImpar($n) {
 
-    if ($n1%2==0){
-        return "el $n1 es par";
+    if ($n%2==0){
+        return "el $n es par";
     }else{
-        return "el $n1 es impar";
+        return "el $n es impar";
     }
     
 }
